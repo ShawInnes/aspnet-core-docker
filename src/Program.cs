@@ -1,4 +1,5 @@
 using Microsoft.AspNetCore.Hosting;
+using Serilog;
 
 namespace HelloUniverse
 {
@@ -9,6 +10,8 @@ namespace HelloUniverse
             Serilog.Log.Logger = new Serilog
                                         .LoggerConfiguration()
                                         .MinimumLevel.Debug()
+                                        .Enrich.FromLogContext()
+                                        .WriteTo.LiterateConsole()
                                         .CreateLogger();
 
             var host = new WebHostBuilder()

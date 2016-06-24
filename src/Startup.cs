@@ -1,5 +1,7 @@
 using Microsoft.AspNetCore.Builder;
 using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.Logging;
+using Serilog;
 
 namespace HelloUniverse
 {
@@ -10,8 +12,9 @@ namespace HelloUniverse
             services.AddMvc();
         }
 
-        public void Configure(IApplicationBuilder app)
+        public void Configure(IApplicationBuilder app, ILoggerFactory factory)
         {
+            factory.AddSerilog();
             app.UseMvc();
         }
     }

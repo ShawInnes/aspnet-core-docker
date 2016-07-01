@@ -13,6 +13,7 @@ namespace HelloUniverse
                                         .Enrich.FromLogContext()
                                         .WriteTo.LiterateConsole()
                                         .CreateLogger();
+            var test = string.Format("Hello World");
 
             var host = new WebHostBuilder()
                           .UseKestrel()
